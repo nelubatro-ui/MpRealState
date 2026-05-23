@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP Real Estate | Bienes Raíces</title>
+    <style>
+        /* Variables de color basadas en el logo */
+        :root {
+            --azul-principal: #1d71b8;
+            --azul-oscuro: #154f82;
+            --negro-texto: #1a1a1a;
+            --gris-claro: #f4f6f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Colocamos la imagen generada como fondo de toda la página */
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--negro-texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Capa superior translúcida opcional para suavizar el fondo si es necesario */
+        .overlay {
+            background: rgba(255, 255, 255, 0.2); 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Barra de navegación / Encabezado */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container img {
+            height: 70px; /* Ajusta el tamaño del logo */
+            width: auto;
+            display: block;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--negro-texto);
+            font-weight: 600;
+            margin-left: 25px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--azul-principal);
+        }
+
+        /* Contenido Principal (Hero Section) */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 140px 5% 60px 5%; /* Espacio para que no lo tape el header fijo */
+            text-align: center;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 50px 40px;
+            border-radius: 16px;
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px); /* Efecto esmerilado moderno */
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: var(--negro-texto);
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 span {
+            color: var(--azul-principal);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Botón de Llamada a la Acción */
+        .btn-contacto {
+            display: inline-block;
+            background-color: var(--azul-principal);
+            color: white;
+            padding: 13px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(29, 113, 184, 0.3);
+        }
+
+        .btn-contacto:hover {
+            background-color: var(--azul-oscuro);
+            transform: translateY(-2px);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: rgba(26, 26, 26, 0.95);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Adaptación para pantallas de celulares */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero {
+                padding-top: 180px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="MP Real Estate Logo">
+            </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#propiedades">Propiedades</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </header>
+
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>Encuentra tu próximo hogar con <span>MP Real Estate</span></h1>
+                <p>Próximamente estaremos lanzando nuestra nueva plataforma web con las mejores propiedades exclusivas del mercado. Diseñada para brindarte la mejor experiencia inmobiliaria.</p>
+                <a href="mailto:info@mprealestate.com" class="btn-contacto">Contáctanos por Email</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 MP Real Estate - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
