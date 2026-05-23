@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP Real Estate | Bienes Raíces</title>
     <style>
-        /* Variables de color basadas en el logo */
+        /* Variables de color basadas en la identidad del logo */
         :root {
             --azul-principal: #1d71b8;
             --azul-oscuro: #154f82;
@@ -21,8 +21,8 @@
         }
 
         body {
-            /* Colocamos la imagen generada como fondo de toda la página */
-            background-image: url('fondo.jpg');
+            /* Carga exacta de tu archivo de fondo con extensión .png */
+            background-image: url('fondo mp.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,7 +32,7 @@
             flex-direction: column;
         }
 
-        /* Capa superior translúcida opcional para suavizar el fondo si es necesario */
+        /* Capa translúcida sobre el fondo para suavizar el patrón */
         .overlay {
             background: rgba(255, 255, 255, 0.2); 
             min-height: 100vh;
@@ -55,7 +55,7 @@
         }
 
         .logo-container img {
-            height: 70px; /* Ajusta el tamaño del logo */
+            height: 70px; /* Tamaño ideal para que luzca el logo redondo */
             width: auto;
             display: block;
         }
@@ -78,7 +78,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 140px 5% 60px 5%; /* Espacio para que no lo tape el header fijo */
+            padding: 140px 5% 60px 5%; /* Espacio superior para evitar solapamiento con el header */
             text-align: center;
         }
 
@@ -109,7 +109,7 @@
             line-height: 1.6;
         }
 
-        /* Botón de Llamada a la Acción */
+        /* Botón de Acción */
         .btn-contacto {
             display: inline-block;
             background-color: var(--azul-principal);
@@ -137,7 +137,7 @@
             font-size: 0.9rem;
         }
 
-        /* Adaptación para pantallas de celulares */
+        /* Responsive para dispositivos móviles */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
