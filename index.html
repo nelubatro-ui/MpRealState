@@ -3,419 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP Real Estate | Bienes Raíces</title>
-    <style>
-        :root {
-            --azul-principal: #1d71b8;
-            --azul-oscuro: #154f82;
-            --negro-texto: #1a1a1a;
-            --gris-claro: #f8f9fa;
-            --blanco-transparente: rgba(255, 255, 255, 0.93);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-image: url('fondo mp.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--negro-texto);
-            min-height: 100vh;
-        }
-
-        .overlay {
-            background: rgba(255, 255, 255, 0.15); 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Encabezado */
-        header {
-            background-color: rgba(255, 255, 255, 0.96);
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container img {
-            height: 65px;
-            width: auto;
-            display: block;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--negro-texto);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--azul-principal);
-        }
-
-        /* Selector de Idiomas */
-        .lang-selector {
-            background: #fff;
-            border: 1px solid #ccc;
-            padding: 5px 8px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-        }
-
-        /* Contenedor de Secciones */
-        .container {
-            padding: 120px 5% 60px 5%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            align-items: center;
-        }
-
-        section {
-            background: var(--blanco-transparente);
-            padding: 40px;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 1100px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255,255,255,0.5);
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: var(--negro-texto);
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 4px;
-            background: var(--azul-principal);
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* Hero / Inicio */
-        .hero h1 {
-            font-size: 2.6rem;
-            margin-bottom: 15px;
-        }
-        .hero h1 span { color: var(--azul-principal); }
-        .hero p {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-contacto {
-            display: inline-block;
-            background-color: var(--azul-principal);
-            color: white;
-            padding: 13px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(29, 113, 184, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        .btn-contacto:hover {
-            background-color: var(--azul-oscuro);
-            transform: translateY(-2px);
-        }
-
-        /* Grid de Propiedades */
-        .grid-propiedades {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .card-propiedad {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            text-align: left;
-            border: 1px solid #eee;
-        }
-
-        .card-img-placeholder {
-            background: #e9ecef;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-weight: bold;
-        }
-
-        .card-info {
-            padding: 20px;
-        }
-
-        .card-info h3 { margin-bottom: 10px; font-size: 1.3rem; }
-        .card-info p { color: #666; font-size: 0.95rem; margin-bottom: 15px; }
-        .card-precio { color: var(--azul-principal); font-weight: 700; font-size: 1.2rem; }
-
-        /* Grid de Cuentas Bancarias */
-        .grid-cuentas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card-cuenta {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: left;
-            border-left: 5px solid var(--azul-principal);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        .card-cuenta h3 { margin-bottom: 12px; color: var(--azul-oscuro); }
-        .card-cuenta p { margin-bottom: 8px; font-size: 0.95rem; color: #444; }
-        .card-cuenta strong { color: var(--negro-texto); }
-
-        /* Controles de audio flotantes */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            font-size: 1.3rem;
-            border: 1px solid #ddd;
-        }
-
-        footer {
-            background-color: rgba(26, 26, 26, 0.96);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; text-align: center; position: relative; }
-            .container { padding-top: 30px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-            section { padding: 25px 15px; }
-            .hero h1 { font-size: 2rem; }
-        }
-    </style>
+    <title>Catálogo de Vehículos Disponibles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <audio id="sonido-mar" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/2513/2513-84.wav" type="audio/wav">
-    </audio>
+    <audio id="sound-scan" src="audio.mp3" preload="auto"></audio>
 
-    <div class="overlay">
-        <header>
-            <div class="logo-container">
-                <img src="logo.png" alt="MP Real Estate Logo">
+    <header>
+        <div class="logo">
+            <h1>Vehículos Disponibles</h1>
+            <p>Escanea, elige y estrena</p>
+            <small style="color: #ffb703; display: block; margin-top: 10px;">
+                <i class="fa-solid fa-hand-pointer"></i> Toca la pantalla para activar la experiencia interactiva
+            </small>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        
+        <div class="car-card">
+            <div class="car-image">
+                <img src="fondo.png" alt="Toyota Sienna 2011">
+                <span class="badge disponible">Disponible</span>
             </div>
-            <nav>
-                <a href="#inicio" id="nav-inicio">Inicio</a>
-                <a href="#propiedades" id="nav-propiedades">Propiedades</a>
-                <a href="#cuentas" id="nav-cuentas">Cuentas Bancarias</a>
-                
-                <select class="lang-selector" onchange="cambiarIdioma(this.value)">
-                    <option value="es">Español 🇩🇴</option>
-                    <option value="en">English 🇺🇸</option>
-                    <option value="fr">Français 🇫🇷</option>
-                    <option value="de">Deutsch 🇩🇪</option>
-                </select>
-            </nav>
-        </header>
-
-        <div class="container">
-            <section class="hero" id="inicio">
-                <h1 id="hero-titulo">Encuentra tu próximo hogar con <span>MP Real Estate</span></h1>
-                <p id="hero-desc">Próximamente estaremos lanzando nuestra nueva plataforma web con las mejores propiedades exclusivas del mercado. Diseñada para brindarte la mejor experiencia inmobiliaria.</p>
-                <a href="mailto:info@mprealestate.com" class="btn-contacto" id="btn-contacto" onclick="activarAudio()">Contáctanos por Email</a>
-            </section>
-
-            <section id="propiedades">
-                <h2 id="sec-propiedades-titulo">Propiedades Destacadas</h2>
-                <div class="grid-propiedades">
-                    <div class="card-propiedad">
-                        <div class="card-img-placeholder">MP Real Estate</div>
-                        <div class="card-info">
-                            <h3 id="p1-titulo">Villa Vista al Mar</h3>
-                            <p id="p1-desc">Hermosa villa de lujo con piscina infinita y acceso directo a la playa.</p>
-                            <span class="card-precio">USD$ 450,000</span>
-                        </div>
-                    </div>
-                    <div class="card-propiedad">
-                        <div class="card-img-placeholder">MP Real Estate</div>
-                        <div class="card-info">
-                            <h3 id="p2-titulo">Apartamento Moderno</h3>
-                            <p id="p2-desc">Ubicado en el corazón de la ciudad, con acabados de primera calidad.</p>
-                            <span class="card-precio">USD$ 185,000</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="cuentas">
-                <h2 id="sec-cuentas-titulo">Cuentas Bancarias</h2>
-                <div class="grid-cuentas">
-                    <div class="card-cuenta">
-                        <h3 id="banco-1">Banco Popular Dominicano</h3>
-                        <p><span id="c-titular">Titular:</span> <strong>MP Real Estate SRL</strong></p>
-                        <p><span id="c-numero">Número de Cuenta:</span> <strong>794613254</strong></p>
-                        <p><span id="c-tipo">Tipo:</span> <strong id="c-corriente">Corriente (Pesos)</strong></p>
-                    </div>
-                    <div class="card-cuenta">
-                        <h3 id="banco-2">Banco de Reservas</h3>
-                        <p><span id="c-titular2">Titular:</span> <strong>MP Real Estate SRL</strong></p>
-                        <p><span id="c-numero2">Número de Cuenta:</span> <strong>960248153</strong></p>
-                        <p><span id="c-tipo2">Tipo:</span> <strong id="c-dolares">Corriente (Dólares)</strong></p>
-                    </div>
-                </div>
-            </section>
+            <div class="car-info">
+                <h3>Toyota Sienna 2011</h3>
+                <p class="price">US$ 11,500</p>
+                <ul class="specs">
+                    <li><i class="fa-solid fa-gas-pump"></i> GLP por Inyección</li>
+                    <li><i class="fa-solid fa-gears"></i> Automática</li>
+                    <li><i class="fa-solid fa-road"></i> Familiar / Confort</li>
+                </ul>
+                <a href="https://wa.me/1809XXXXXXX?text=Hola,%20estoy%20interesado%20en%20la%20Toyota%20Sienna%202011" class="btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                </a>
+            </div>
         </div>
 
-        <div class="audio-control" id="btn-audio" onclick="alternarAudio()">🔊</div>
+        <div class="car-card">
+            <div class="car-image">
+                <img src="fondo.png" alt="Hyundai Sonata 2016">
+                <span class="badge disponible">Disponible</span>
+            </div>
+            <div class="car-info">
+                <h3>Hyundai Sonata 2016</h3>
+                <p class="price">US$ 10,800</p>
+                <ul class="specs">
+                    <li><i class="fa-solid fa-gas-pump"></i> GLP de fábrica</li>
+                    <li><i class="fa-solid fa-gears"></i> Automático</li>
+                    <li><i class="fa-solid fa-road"></i> Sedán Elegante</li>
+                </ul>
+                <a href="https://wa.me/1809XXXXXXX?text=Hola,%20estoy%20interesado%20en%20el%20Hyundai%20Sonata%202016" class="btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                </a>
+            </div>
+        </div>
 
-        <footer>
-            <p>&copy; 2026 MP Real Estate - <span id="foot-derechos">Todos los derechos reservados.</span></p>
-        </footer>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tu Dealer Digital. Todos los derechos reservados.</p>
+    </footer>
 
     <script>
-        // --- SISTEMA DE TRADUCCIÓN ---
-        const traducciones = {
-            es: {
-                "nav-inicio": "Inicio", "nav-propiedades": "Propiedades", "nav-cuentas": "Cuentas Bancarias",
-                "hero-titulo": "Encuentra tu próximo hogar con <span>MP Real Estate</span>",
-                "hero-desc": "Próximamente estaremos lanzando nuestra nueva plataforma web con las mejores propiedades exclusivas del mercado. Diseñada para brindarte la mejor experiencia inmobiliaria.",
-                "btn-contacto": "Contáctanos por Email", "sec-propiedades-titulo": "Propiedades Destacadas",
-                "p1-titulo": "Villa Vista al Mar", "p1-desc": "Hermosa villa de lujo con piscina infinita y acceso directo a la playa.",
-                "p2-titulo": "Apartamento Moderno", "p2-desc": "Ubicado en el corazón de la ciudad, con acabados de primera calidad.",
-                "sec-cuentas-titulo": "Cuentas Bancarias", "c-titular": "Titular:", "c-titular2": "Titular:",
-                "c-numero": "Número de Cuenta:", "c-numero2": "Número de Cuenta:", "c-tipo": "Tipo:", "c-tipo2": "Tipo:",
-                "c-corriente": "Corriente (Pesos)", "c-dolares": "Corriente (Dólares)", "foot-derechos": "Todos los derechos reservados."
-            },
-            en: {
-                "nav-inicio": "Home", "nav-propiedades": "Properties", "nav-cuentas": "Bank Accounts",
-                "hero-titulo": "Find your next home with <span>MP Real Estate</span>",
-                "hero-desc": "We will soon be launching our new web platform featuring the finest exclusive properties on the market. Designed to provide you with the ultimate real estate experience.",
-                "btn-contacto": "Contact us via Email", "sec-propiedades-titulo": "Featured Properties",
-                "p1-titulo": "Ocean View Villa", "p1-desc": "Beautiful luxury villa with an infinity pool and direct beach access.",
-                "p2-titulo": "Modern Apartment", "p2-desc": "Located in the heart of the city, featuring premium quality finishes.",
-                "sec-cuentas-titulo": "Bank Accounts", "c-titular": "Holder:", "c-titular2": "Holder:",
-                "c-numero": "Account Number:", "c-numero2": "Account Number:", "c-tipo": "Type:", "c-tipo2": "Type:",
-                "c-corriente": "Checking (DOP)", "c-dolares": "Checking (USD)", "foot-derechos": "All rights reserved."
-            },
-            fr: {
-                "nav-inicio": "Accueil", "nav-propiedades": "Propriétés", "nav-cuentas": "Comptes Bancaires",
-                "hero-titulo": "Trouvez votre prochaine maison avec <span>MP Real Estate</span>",
-                "hero-desc": "Nous lancerons bientôt notre nouvelle plateforme web avec les meilleures propriétés exclusives du marché. Conçue pour vous offrir la meilleure expérience immobilière.",
-                "btn-contacto": "Contactez-nous por Email", "sec-propiedades-titulo": "Propriétés Vedettes",
-                "p1-titulo": "Villa Vue sur Mer", "p1-desc": "Belle villa de luxe avec piscine à débordement et accès direct à la plage.",
-                "p2-titulo": "Appartement Moderne", "p2-desc": "Situé au cœur de la ville, avec des finitions de première qualité.",
-                "sec-cuentas-titulo": "Comptes Bancaires", "c-titular": "Titulaire:", "c-titular2": "Titulaire:",
-                "c-numero": "Numéro de Compte:", "c-numero2": "Numéro de Compte:", "c-tipo": "Type:", "c-tipo2": "Type:",
-                "c-corriente": "Courant (Pesos)", "c-dolares": "Courant (Dollars)", "foot-derechos": "Tous droits réservés."
-            },
-            de: {
-                "nav-inicio": "Startseite", "nav-propiedades": "Immobilien", "nav-cuentas": "Bankkonten",
-                "hero-titulo": "Finden Sie Ihr nächstes Zuhause bei <span>MP Real Estate</span>",
-                "hero-desc": "Wir werden in Kürze unsere neue Webplattform mit den besten exklusiven Immobilien auf dem Markt starten. Entwickelt, um Ihnen das beste Immobilienerlebnis zu bieten.",
-                "btn-contacto": "Kontaktieren Sie uns per E-Mail", "sec-propiedades-titulo": "Ausgewählte Immobilien",
-                "p1-titulo": "Villa mit Meerblick", "p1-desc": "Wunderschöne Luxusvilla mit Infinity-Pool und direktem Zugang zum Strand.",
-                "p2-titulo": "Modernes Apartment", "p2-desc": "Im Herzen der Stadt gelegen, mit erstklassigen Oberflächen.",
-                "sec-cuentas-titulo": "Bankkonten", "c-titular": "Inhaber:", "c-titular2": "Inhaber:",
-                "c-numero": "Kontonummer:", "c-numero2": "Kontonummer:", "c-tipo": "Typ:", "c-tipo2": "Typ:",
-                "c-corriente": "Girokonto (Pesos)", "c-dolares": "Girokonto (Dollar)", "foot-derechos": "Alle Rechte vorbehalten."
-            }
-        };
+        const scanSound = document.getElementById('sound-scan');
 
-        function cambiarIdioma(lang) {
-            const diccionario = traducciones[lang];
-            for (let id in diccionario) {
-                const elemento = document.getElementById(id);
-                if (elemento) {
-                    if (id === "hero-titulo") {
-                        elemento.innerHTML = diccionario[id]; // Permite mantener la etiqueta <span>
-                    } else {
-                        elemento.innerText = diccionario[id];
-                    }
-                }
-            }
+        function playInitialSound() {
+            // Intenta reproducir el sonido de olas
+            scanSound.play().catch(error => {
+                console.log("Interacción requerida por el navegador:", error);
+            });
+            
+            // Remueve los eventos para que solo suene una vez al entrar
+            document.removeEventListener('click', playInitialSound);
+            document.removeEventListener('touchstart', playInitialSound);
         }
 
-        // --- SISTEMA DE AUDIO ---
-        const audio = document.getElementById('sonido-mar');
-        const btnAudio = document.getElementById('btn-audio');
-        audio.volume = 0.25;
-
-        document.body.addEventListener('click', () => { activarAudio(); }, { once: true });
-
-        function activarAudio() {
-            audio.play().then(() => {
-                btnAudio.innerText = "🔊";
-            }).catch(err => console.log("Audio en espera de interacción."));
-        }
-
-        function alternarAudio() {
-            if (audio.paused) {
-                audio.play();
-                btnAudio.innerText = "🔊";
-            } else {
-                audio.pause();
-                btnAudio.innerText = "🔇";
-            }
-        }
+        // Escucha el primer toque o clic en cualquier parte de la web
+        document.addEventListener('click', playInitialSound);
+        document.addEventListener('touchstart', playInitialSound);
     </script>
+
 </body>
 </html>
